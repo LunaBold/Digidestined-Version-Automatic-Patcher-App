@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Digidestined Automatic Patcher"
+run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/bg_color=Color(0, 0.0392157, 0.52549, 1)
+boot_splash/image="res://Splash.png"
+config/icon="res://icon.svg"
+
+[autoload]
+
+MoveIdReference="*res://moveIDReference.gd"
+
+[display]
+
+window/size/viewport_width=1000
+window/size/viewport_height=800
+
+[editor_plugins]
+
+enabled=PackedStringArray()
