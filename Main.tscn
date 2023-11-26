@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dj3jwipbleklr"]
+[gd_scene load_steps=20 format=3 uid="uid://dj3jwipbleklr"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_ofal0"]
 [ext_resource type="Texture2D" uid="uid://d06yh0h5t5wgh" path="res://Logo.jpg" id="1_v8bt5"]
 [ext_resource type="Shader" path="res://ChromaAbber.gdshader" id="2_fufir"]
 [ext_resource type="FontFile" uid="uid://bluo0ae8csvgm" path="res://HACKED.TTF" id="3_d62iu"]
 [ext_resource type="FontFile" uid="uid://dtcoal5gjkrqn" path="res://SILKSCREEN.TTF" id="4_vljkk"]
+[ext_resource type="Script" path="res://VersionNumbering.gd" id="5_506gk"]
 [ext_resource type="Script" path="res://FileSearch.gd" id="5_ifuob"]
 [ext_resource type="Texture2D" uid="uid://tvumdgbvpe7g" path="res://Loading.png" id="7_epxh4"]
 
@@ -44,6 +45,14 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.278431, 0, 0.0235294, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_by7f1"]
+bg_color = Color(1, 0.639216, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.682353, 0.305882, 0, 1)
 
 [sub_resource type="Animation" id="Animation_nhh67"]
 resource_name = "Pulsation"
@@ -176,6 +185,30 @@ Patcher"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Version" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/TextureRect"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_3cev8")
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 494.0
+offset_top = -113.794
+offset_right = 586.0
+offset_bottom = -55.7935
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/line_spacing = -10
+theme_override_fonts/font = ExtResource("3_d62iu")
+theme_override_font_sizes/font_size = 54
+text = "Ver.1.4"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_506gk")
+_versionNumber = "Ver.1.4"
+
 [node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
@@ -200,13 +233,38 @@ file_mode = 2
 access = 2
 filters = PackedStringArray("folder")
 
-[node name="AcceptDialog" type="AcceptDialog" parent="."]
+[node name="No Modfiles" type="AcceptDialog" parent="."]
 title = "Error!"
 initial_position = 1
 size = Vector2i(381, 109)
 theme_override_styles/panel = SubResource("StyleBoxFlat_55rwn")
 dialog_text = "The selected folder does not seem to be a mod.
 Make sure you select the 'modfiles' folder!"
+dialog_autowrap = true
+
+[node name="No Digimon" type="AcceptDialog" parent="."]
+title = "Error!"
+initial_position = 1
+size = Vector2i(381, 109)
+theme_override_styles/panel = SubResource("StyleBoxFlat_55rwn")
+dialog_text = "The loaded mod appears to not have any digimon present"
+dialog_autowrap = true
+
+[node name="No Evolutions" type="AcceptDialog" parent="."]
+title = "Error!"
+initial_position = 1
+size = Vector2i(381, 109)
+theme_override_styles/panel = SubResource("StyleBoxFlat_55rwn")
+dialog_text = "The loaded mod appears to not have any evolutions  present"
+dialog_autowrap = true
+
+[node name="No Moves" type="AcceptDialog" parent="."]
+title = "Warning!"
+initial_position = 1
+size = Vector2i(381, 127)
+theme_override_styles/panel = SubResource("StyleBoxFlat_by7f1")
+dialog_text = "The loaded mod appears to not have any custom moves present. This is ok to ignore, unless it was expected there would be."
+dialog_autowrap = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false
